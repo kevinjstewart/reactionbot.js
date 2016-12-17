@@ -18,7 +18,6 @@ const _UserEmojis = [
 			"BLACK FLAG",
 			"METH",
 			"PIPE",
-
 		]
 	},
 	{
@@ -39,7 +38,18 @@ const _UserEmojis = [
 			"CONFEDERATE",
 			"JIHADI",
 		]
-	}
+	},
+	{
+		"Name": "Kevin",
+		"ID": "95872211780390912",
+		"Emojis": [
+			"ZURPIE",
+			"PROUD",
+			"CONFEDERATE",
+			"JIHADI",
+		]
+	},
+
 ]
 
 _Client.on('ready', () => {
@@ -65,11 +75,14 @@ _Client.on('disconnect', () => {
 
 _Client.on('messageCreate', (msg) => {
 	if (msg.author != _Client) {
+		var emoji = _Emojis.ResolveEmoji(_Emojis.RandomEmoji());
+
 		var user = _UserEmojis.find((user) => user.ID === msg.author.id);
 		if (user) {
-			var emoji = _Emojis.ResolveEmoji(_Emojis.EmojiByName(user.Emojis.random()));
-			_Client.addMessageReaction(msg.channel.id, msg.id, emoji).then((msg) => { }, (err) => {});
+			emoji = _Emojis.ResolveEmoji(_Emojis.EmojiByName(user.Emojis.random()));
 		}
+
+		_Client.addMessageReaction(msg.channel.id, msg.id, emoji).then((msg) => { }, (err) => {});
 	}
 });
 
