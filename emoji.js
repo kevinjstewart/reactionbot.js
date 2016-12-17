@@ -2425,12 +2425,12 @@ module.exports = {
 			return null;
 		}
 	},
-	UpdateEmoji: (name, code, type) => {
-		var emoji = _Emojis.find((emoji) => emoji.name === name.toUpperCase());
-		if (emoji) {
-			emoji.code = code;
+	UpdateEmoji: (emoji) => {
+		var found_Emoji = _Emojis.find((emoji) => emoji.name === emoji.name.toUpperCase());
+		if (found_Emoji) {
+			found_Emoji.code = emoji.code;
 		} else {
-			_Emojis.push({type: type, name: name.toUpperCase(), code: code});
+			_Emojis.push({type: emoji.type, name: emoji.name.toUpperCase(), code: emoji.code});
 		}
 	}
 };

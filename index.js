@@ -46,7 +46,7 @@ _Client.on('ready', () => {
 	console.log("Connected");
 	_Client.guilds.forEach((guild) => {
 		guild.emojis.forEach((emoji) => {
-			_Emojis.UpdateEmoji(emoji.name, emoji.id, "EMOJI_SERVER");
+			_Emojis.UpdateEmoji({name: emoji.name, code: emoji.id, type: "EMOJI_SERVER"});
 		});
 	});
 });
