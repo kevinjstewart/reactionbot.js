@@ -42,6 +42,30 @@ const _UserEmojis = [
 	}
 ]
 
+const _TriggerWords = [
+    {
+        "Phrase": "meth",
+        "Emojis" : [
+        	"PIPE",
+        	"METH"
+        ]
+    },
+    {
+        "Phrase": "black eagle",
+        "Emojis" : [
+        	"BLACK FLAG",
+        	"EAGLE",
+        	"RAINBOW"
+        ]
+    },
+    {
+        "Phrase": "cheers",
+        "Emojis" : [
+        	"BEERS"
+        ]
+    }
+]
+
 _Client.on('ready', () => {
 	console.log("Connected");
 	_Client.guilds.forEach((guild) => {
@@ -67,8 +91,13 @@ _Client.on('messageCreate', (msg) => {
 	if (msg.author != _Client) {
 		var user = _UserEmojis.find((user) => user.ID === msg.author.id);
 		if (user) {
-			var emoji = _Emojis.ResolveEmoji(_Emojis.EmojiByName(user.Emojis.random()));
-			_Client.addMessageReaction(msg.channel.id, msg.id, emoji).then((msg) => { }, (err) => {});
+           _TriggerWords.forEach(function(element) {
+			   if (msg.content.toUpperCase().indexOf(element.Phrase) !== -1) {
+				   element.Emojis.forEach(function(emoji) {
+					   _Client.addMessageReaction(msg.channel.id, msg.id, emoji);
+				   });
+			   }
+		   });
 		}
 	}
 });
