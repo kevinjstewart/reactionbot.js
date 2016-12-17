@@ -9,6 +9,7 @@
   "author": "Blake",
   "license": "ISC",
   "dependencies": {
+    "eris": "^0.5.1",
     "path": "^0.12.7",
     "utf8": "^2.1.2"
   }
