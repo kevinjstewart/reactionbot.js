@@ -1,0 +1,15 @@
+{
+  "name": "reactionbot.js",
+  "version": "1.0.0",
+  "description": "Reaction Bot for Discord Memes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blake",
+  "license": "ISC",
+  "dependencies": {
+    "path": "^0.12.7",
+    "utf8": "^2.1.2"
+  }
+}
